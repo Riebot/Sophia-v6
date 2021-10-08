@@ -612,10 +612,10 @@ async def play(_, message: Message):
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣",]
 
             while j < 5:
-                toxxt += f"{emojilist[j]} **Title - [{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})**\n"
-                toxxt += f" ╚ **Duration** - {results[j]['duration']}\n"
-                toxxt += f" ╚ **Views** - {results[j]['views']}\n"
-                toxxt += f" ╚ **Channel** - {results[j]['channel']}\n\n"
+                toxxt += f"{emojilist[j]} **✏ Nama** - `[{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})`\n"
+                toxxt += f" ╚ **✏ Durasi** - `{results[j]['duration']}`\n"
+                toxxt += f" ╚ **✏ Views** - `{results[j]['views']}`\n"
+                toxxt += f" ╚ __Powered by Stereo Music Project__\n\n"
 
                 j += 1            
             koyboard = InlineKeyboardMarkup(
@@ -688,7 +688,7 @@ async def play(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"#⃣ Your requested song **queued** at position {position}!",
+            caption=f"#⃣ **🎵 Lagu yang kamu minta,Sedang antri di posisi** `{position}`",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -838,7 +838,7 @@ async def ytplay(_, message: Message):
         qeue.append(appendable)
         await message.reply_photo(
             photo="final.png",
-            caption=f"#⃣ Your requested song **queued** at position {position}!",
+            caption=f"#⃣ **Lagu Yang Kamu Minta,Sedang Antri Di Posisi** `{position}`",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -861,7 +861,7 @@ async def ytplay(_, message: Message):
             photo="final.png",
             reply_markup=keyboard,
             caption="▶️ **Playing** here the song requested by {} via Youtube Music 😜".format(
-                message.from_user.mention()
+              message.from_user.mention()
             ),
         )
         os.remove("final.png")
@@ -983,7 +983,7 @@ async def jiosaavn(client: Client, message_: Message):
             chat_id=message_.chat.id,
             reply_markup=keyboard,
             photo="final.png",
-            caption=f"✯{bn}✯=#️⃣ Queued at position {position}",
+            caption=f"✯{bn}✯=**#️⃣ Antri Di Posisi** `{position}`",
         )
 
     else:
@@ -1092,7 +1092,7 @@ async def lol_cb(b, cb):
         await cb.message.delete()
         await b.send_photo(chat_id,
             photo="final.png",
-            caption=f"#⃣  Song requested by {r_by.mention} **queued** at position {position}!",
+            caption=f"#⃣  **Lagu Yang Di Request Dari {r_by.mention} Sedang Antri Di Posisi** `{position}`",
             reply_markup=keyboard,
         )
         os.remove("final.png")
@@ -1114,6 +1114,6 @@ async def lol_cb(b, cb):
         await b.send_photo(chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"**🎬Song:**{title}\n **⏳Duration:**{duration}\n **▶️Now Playing at** {cb.message.chat.title}",
+            caption=f"**🏷 Nama: **{title}\n **⏱ Durasi: **{duration}\n `🎵 Sedang memutar lagu di grup` {cb.message.chat.title}",
         )
         os.remove("final.png")
