@@ -581,10 +581,7 @@ async def play(_, message: Message):
                 InlineKeyboardButton("⏸", "puse"),
                 InlineKeyboardButton("▶️", "resume"),
                 InlineKeyboardButton("⏭", "skip"),
-            ],
-           [
-                InlineKeyboardButton("🎚 Playlist ", "playlist"),
-                InlineKeyboardButton("Settings ⚙", "menu"),
+         [   
             ],
             [InlineKeyboardButton(" Close Menu 🎛", "cls")],
         ]
@@ -606,7 +603,7 @@ async def play(_, message: Message):
           await lel.edit("Give me something to play")
         # Looks like hell. Aren't it?? FUCK OFF
         try:
-            toxxt = "**Select the song you want to play**\n\n"
+            toxxt = "**Pilih Lagu Yang Ingin Di Putar**\n\n"
             j = 0
             useer=user_name
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣",]
@@ -615,7 +612,7 @@ async def play(_, message: Message):
                 toxxt += f"{emojilist[j]} **🏷 Nama** - `[{results[j]['title']}]`\n"
                 toxxt += f" ╚ **⏱ Durasi** - `{results[j]['duration']}`\n"
                 toxxt += f" ╚ **👀 Views** - `{results[j]['views']}`\n"
-                toxxt += f" ╚ __Powered by Stereo Music Project__\n\n"
+                toxxt += f" ╚ ⚡__Powered by Stereo Music Project__\n\n"
 
                 j += 1            
             koyboard = InlineKeyboardMarkup(
@@ -666,12 +663,9 @@ async def play(_, message: Message):
                 InlineKeyboardButton("⏸", "puse"),
                 InlineKeyboardButton("▶️", "resume"),
                 InlineKeyboardButton("⏭", "skip"),
-            ],
             [
-                InlineKeyboardButton("🎚 Playlist ", "playlist"),
-                InlineKeyboardButton("Settings ⚙", "menu"),
             ],
-            [InlineKeyboardButton(" Close Menu 🎛", "cls")],
+              [InlineKeyboardButton(" Close ❌", "cls")],
         ]
     )
             requested_by = message.from_user.first_name
@@ -792,7 +786,7 @@ async def ytplay(_, message: Message):
         results = YoutubeSearch(query, max_results=1).to_dict()
         url = f"https://youtube.com{results[0]['url_suffix']}"
         # print(results)
-        title = results[0]["title"][:40]
+        title = results[0]["title"][:60]
         thumbnail = results[0]["thumbnails"][0]
         thumb_name = f"thumb{title}.jpg"
         thumb = requests.get(thumbnail, allow_redirects=True)
@@ -816,12 +810,9 @@ async def ytplay(_, message: Message):
                 InlineKeyboardButton("⏸", "puse"),
                 InlineKeyboardButton("▶️", "resume"),
                 InlineKeyboardButton("⏭", "skip"),
+         [
             ],
-            [
-                InlineKeyboardButton("🎚 Playlist ", "playlist"),
-                InlineKeyboardButton("Settings ⚙", "menu"),
-            ],
-            [InlineKeyboardButton(" Close Menu 🎛", "cls")],
+            [InlineKeyboardButton(" Close ❌", "cls")],
         ]
     )
     requested_by = message.from_user.first_name
@@ -961,11 +952,7 @@ async def jiosaavn(client: Client, message_: Message):
                 InlineKeyboardButton("▶️", "resume"),
                 InlineKeyboardButton("⏭", "skip"),
             ],
-            [
-                InlineKeyboardButton("🎚 Playlist ", "playlist"),
-                InlineKeyboardButton("Settings ⚙", "menu"),
-            ],
-            [InlineKeyboardButton(" Close Menu 🎛", "cls")],
+            [InlineKeyboardButton(" Close ❌", "cls")],
         ]
     )
     file_path = await convert(wget.download(slink))
@@ -1068,11 +1055,7 @@ async def lol_cb(b, cb):
                 InlineKeyboardButton("▶️", "resume"),
                 InlineKeyboardButton("⏭", "skip"),
             ],
-            [
-                InlineKeyboardButton("🎚 Playlist ", "playlist"),
-                InlineKeyboardButton("Settings ⚙", "menu"),
-            ],
-            [InlineKeyboardButton(" Close Menu 🎛", "cls")],
+            [InlineKeyboardButton(" Close ❌", "cls")],
         ]
     )
     requested_by = useer_name
@@ -1114,6 +1097,6 @@ async def lol_cb(b, cb):
         await b.send_photo(chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"**🏷 Nama: **{title}\n **⏱ Durasi: **{duration}\n `🎵 Sedang memutar lagu di` {cb.message.chat.title}",
+            caption=f"**🏷 Nama:** [{title[:100]}]({url})\n **⏱ Durasi:** `{duration}`\n **💡 Status:** `🎵 Sedang memutar di` {cb.message.chat.title}",
         )
         os.remove("final.png")
