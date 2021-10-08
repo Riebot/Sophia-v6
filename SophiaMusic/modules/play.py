@@ -612,9 +612,9 @@ async def play(_, message: Message):
             emojilist = ["1️⃣","2️⃣","3️⃣","4️⃣","5️⃣",]
 
             while j < 5:
-                toxxt += f"{emojilist[j]} **✏ Nama** - `[{results[j]['title']}](https://youtube.com{results[j]['url_suffix']})`\n"
-                toxxt += f" ╚ **✏ Durasi** - `{results[j]['duration']}`\n"
-                toxxt += f" ╚ **✏ Views** - `{results[j]['views']}`\n"
+                toxxt += f"{emojilist[j]} **🏷 Nama** - `[{results[j]['title']}]`\n"
+                toxxt += f" ╚ **⏱ Durasi** - `{results[j]['duration']}`\n"
+                toxxt += f" ╚ **👀 Views** - `{results[j]['views']}`\n"
                 toxxt += f" ╚ __Powered by Stereo Music Project__\n\n"
 
                 j += 1            
