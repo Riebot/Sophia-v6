@@ -922,7 +922,7 @@ async def jiosaavn(client: Client, message_: Message):
     text = message_.text.split(" ", 1)
     query = text[1]
     res = lel
-    await res.edit(f"Searching 👀👀👀 for `{query}` on jio saavn")
+    await res.edit(f"🔎 Mencari dari `{query}` on jio saavn")
     try:
         songs = await arq.saavn(query)
         if not songs.ok:
@@ -1097,6 +1097,6 @@ async def lol_cb(b, cb):
         await b.send_photo(chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"**🏷 Nama:** [{title[:100]}]({url})\n **⌚ Durasi:** `{duration}`\n **💡 Status:** `🎵 Sedang memutar di` {cb.message.chat.title}",
+            caption=f"**🏷 Nama:** [{title[:100]}]({url})\n **⌚ Durasi:** `{duration}`\n **🎧 Di request:** {r_by.mention}\n **💡 Status:** `🎵 Sedang memutar di` {cb.message.chat.title}",
         )
         os.remove("final.png")
