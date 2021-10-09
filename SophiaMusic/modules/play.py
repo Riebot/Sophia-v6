@@ -443,7 +443,7 @@ async def play(_, message: Message):
     global useer
     if message.chat.id in DISABLED_GROUPS:
         return    
-    lel = await message.reply("🔄 **Processing Sounds**")
+    lel = await message.reply("🔄 **Sedang memproses lagu**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -498,7 +498,7 @@ async def play(_, message: Message):
         )
         return
     text_links=None
-    await lel.edit("🔎 **Finding**")
+    await lel.edit("🔎 **Mencari judul lagu**")
     if message.reply_to_message:
         entities = []
         toxt = message.reply_to_message.text or message.reply_to_message.caption
@@ -551,7 +551,7 @@ async def play(_, message: Message):
         )
     elif urls:
         query = toxt
-        await lel.edit("🎵 **Downloading..**")
+        await lel.edit("🎵 **Sedang mendownload lagu..**")
         ydl_opts = {"format": "bestaudio/best"}
         try:
             results = YoutubeSearch(query, max_results=1).to_dict()
@@ -568,7 +568,7 @@ async def play(_, message: Message):
 
         except Exception as e:
             await lel.edit(
-                "Song not found.Try another song or maybe spell it properly."
+               "**Lagu tidak ditemukan.** __Coba cari dengan judul lagu yang lebih jelas.__ **Contoh »** `/play Jentaka`"
             )
             print(str(e))
             return
@@ -594,7 +594,7 @@ async def play(_, message: Message):
         for i in message.command[1:]:
             query += " " + str(i)
         print(query)
-        await lel.edit("🎵 **Downloading..**")
+        await lel.edit("🎵 `Menghubungkan ke obrolan suara..`")
         ydl_opts = {"format": "bestaudio/best"}
         
         try:
@@ -610,9 +610,9 @@ async def play(_, message: Message):
 
             while j < 5:
                 toxxt += f"{emojilist[j]} **🏷 Nama** - `[{results[j]['title']}]`\n"
-                toxxt += f" ╚ **⏱ Durasi** - `{results[j]['duration']}`\n"
-                toxxt += f" ╚ **👀 Views** - `{results[j]['views']}`\n"
-                toxxt += f" ╚ ⚡__Powered by Stereo Music Project__\n\n"
+                toxxt += f" ╚ **⏰ Durasi** - `{results[j]['duration']}`\n"
+                toxxt += f" ╚ **📹 Views** - `{results[j]['views']}`\n"
+                toxxt += f" ╚ __🏷 Powered by ©Stereo Project__\n\n"
 
                 j += 1            
             koyboard = InlineKeyboardMarkup(
@@ -650,7 +650,7 @@ async def play(_, message: Message):
 
             except Exception as e:
                 await lel.edit(
-                    "Song not found.Try another song or maybe spell it properly."
+                    "**Lagu tidak ditemukan.** __Coba cari dengan judul lagu yang lebih jelas.__ **Contoh »** `/play Jentaka`"
                 )
                 print(str(e))
                 return
@@ -717,7 +717,7 @@ async def ytplay(_, message: Message):
     global que
     if message.chat.id in DISABLED_GROUPS:
         return
-    lel = await message.reply("🔄 **Processing**")
+    lel = await message.reply("🔄 **Sedang Memproses Lagu**")
     administrators = await get_administrators(message.chat)
     chid = message.chat.id
 
@@ -771,7 +771,7 @@ async def ytplay(_, message: Message):
             f"<i> {user.first_name} Userbot not in this chat, Ask admin to send /play command for first time or add {user.first_name} manually</i>"
         )
         return
-    await lel.edit("🔎 **Finding**")
+    await lel.edit("🔎 **Sedang Mencari Lagu**")
     user_id = message.from_user.id
     user_name = message.from_user.first_name
      
@@ -780,7 +780,7 @@ async def ytplay(_, message: Message):
     for i in message.command[1:]:
         query += " " + str(i)
     print(query)
-    await lel.edit("🎵 **Processing**")
+    await lel.edit("🎵 `Menghubungkan ke obrolan suara...`")
     ydl_opts = {"format": "bestaudio/best"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -1097,6 +1097,6 @@ async def lol_cb(b, cb):
         await b.send_photo(chat_id,
             photo="final.png",
             reply_markup=keyboard,
-            caption=f"**🏷 Nama:** [{title[:100]}]({url})\n **⏱ Durasi:** `{duration}`\n **💡 Status:** `🎵 Sedang memutar di` {cb.message.chat.title}",
+            caption=f"**🏷 Nama:** [{title[:100]}]({url})\n **⌚ Durasi:** `{duration}`\n **💡 Status:** `🎵 Sedang memutar di` {cb.message.chat.title}",
         )
         os.remove("final.png")
